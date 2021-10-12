@@ -24,7 +24,10 @@ def compute_score(user1, user2):
     
     #account for grad year compatibility--lower points the farther apart their grad years are
     
-    #add points for responses
+    #add points for responses: 20 questions, each question is worth 5 points (5 possible answers, depending on compatibility) -- total possible 100 points
+    #then account for grad year compatibility by multiplying by a decimal: 1 if they're the same year, then smaller numbers as they get father apart. 
+    #scores are out of 100. Or at this point, if we want them out of a smaller number, possible to normalize.
+    
     #need to know if different questions should be weighted more heavily
     #need to know if someone who answers A is more compatible with someone who answers C, or only people who answer A/A are compatible
     #probably people who give all the same answers are also not the most compatible, it's too similar
