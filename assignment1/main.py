@@ -16,6 +16,26 @@ class User:
 
 # Takes in two user objects and outputs a float denoting compatibility
 def compute_score(user1, user2):
+    #first check gender compatibility
+    if user1.preferences[0] != user2.gender
+        return 0
+    if user2.preferences[0] != user1.gender
+        return 0
+    
+    #account for grad year compatibility--lower points the farther apart their grad years are
+    
+    #add points for responses
+    #need to know if different questions should be weighted more heavily
+    #need to know if someone who answers A is more compatible with someone who answers C, or only people who answer A/A are compatible
+    #probably people who give all the same answers are also not the most compatible, it's too similar
+    
+    #things I would want to add to preferences:
+    #if there were questions that are more imp to you
+    #if you want to be matched with M or F
+    #if you have a preference for older or younger
+    #preference for someone different/similar to you
+    
+    
     # YOUR CODE HERE
     return 0
 
