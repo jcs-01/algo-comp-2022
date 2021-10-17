@@ -21,6 +21,7 @@ def compute_score(user1, user2):
         return 0
     if user2.preferences[0] != user1.gender
         return 0
+    print("Hello")
     
     #account for grad year compatibility--lower points the farther apart their grad years are
     
