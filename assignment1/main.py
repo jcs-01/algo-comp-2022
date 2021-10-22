@@ -17,31 +17,57 @@ class User:
 # Takes in two user objects and outputs a float denoting compatibility
 def compute_score(user1, user2):
     #first check gender compatibility
-    if user1.preferences[0] != user2.gender
+    if user1.preferences[0] != user2.gender:
         return 0
-    if user2.preferences[0] != user1.gender
+    if user2.preferences[0] != user1.gender:
         return 0
-    print("Hello")
+        
+    # Add points for responses: 20 questions, each question is worth 5 points
+    # Determine how many of their answers are the same
+    numbersame = 0
+    length = len(user1.responses)
+    for i in range(0,length):
+        if user1.responses[i] == user2.responses[i]:
+            numbersame += 1
+
+    # Assign a score for compability based on similarity of numbers
+    # This creates a score out of 1 (20 questions * 5 = 100 points)
+    if numbersame <= 15:
+        score = (numbersame * 5) / 100
+    # If they're 3/4 similar, maybe too similar, so lower score by 10%.
+    else:
+        score = numbersame * .9
+
+    # Account for graduation year--lower score the greater the difference in years.
+    difference = user1.grad_year - user2.grad_year
+    if difference == 1:
+        score *= .9
+    elif difference == 2:
+        score *= .8
+    elif difference == 3:
+        score *= .7
+
+    score = round(score, 2)
+
+    # Normalize so outputs are between .5 and 1
+    score *= 2
+
+
+
+    stringscore = f"{round(score*100)}%"
+    # Returns compability value
+    return stringscore
+
+    # More information I don't have from this data that I would want to take into account:
+    # If some questions should be weighted more heavily than others
+    # If your answers are relevant, not just if you answered the same vs different -- ex if someone who answers A is more compatible with answer "D" than "C"
+    # How to judge how similar is too similar, how different is too different
+
+    # We could get input from people on (add to preferences or evaluate from answers):
+    # Are there questions that matter more to you?
+    # Do you have a preference in terms of grad year? (older vs younger? same year?)
+    # Preference for how similar/different someone is to you?
     
-    #account for grad year compatibility--lower points the farther apart their grad years are
-    
-    #add points for responses: 20 questions, each question is worth 5 points (5 possible answers, depending on compatibility) -- total possible 100 points
-    #then account for grad year compatibility by multiplying by a decimal: 1 if they're the same year, then smaller numbers as they get father apart. 
-    #scores are out of 100. Or at this point, if we want them out of a smaller number, possible to normalize.
-    
-    #need to know if different questions should be weighted more heavily
-    #need to know if someone who answers A is more compatible with someone who answers C, or only people who answer A/A are compatible
-    #probably people who give all the same answers are also not the most compatible, it's too similar
-    
-    #things I would want to add to preferences:
-    #if there were questions that are more imp to you
-    #if you want to be matched with M or F
-    #if you have a preference for older or younger
-    #preference for someone different/similar to you
-    
-    
-    # YOUR CODE HERE
-    return 0
 
 
 if __name__ == '__main__':
